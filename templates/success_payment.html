@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ការបង់ប្រាក់ជោគជ័យ | KHQR</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        * {
+            font-family: 'Khmer OS Battambang', system-ui, sans-serif;
+        }
+
+        .transaction-hash {
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-[#f7f9fb] text-slate-900 antialiased">
+    <main class="mx-auto flex min-h-screen w-full max-w-7xl items-center px-4 py-8 sm:px-6 lg:px-8">
+        <div class="grid w-full grid-cols-1 items-center gap-6 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:gap-2">
+
+            <!-- Success card -->
+            <section class="relative z-10 w-full rounded-[2rem] border border-emerald-100 bg-white px-6 py-8 text-center shadow-[0_18px_45px_-30px_rgba(15,23,42,0.22)] sm:px-10 sm:py-10 lg:px-10 lg:py-14">
+                <div class="mx-auto grid size-20 place-items-center rounded-full bg-emerald-50 text-emerald-600 sm:size-28">
+                    <svg class="size-10 sm:size-12" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="m5 12 4 4L19 6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+
+                <p class="mt-7 text-sm font-bold uppercase tracking-[0.14em] text-emerald-600 sm:text-base">
+                    Payment successful
+                </p>
+
+                <h1 class="mt-2 text-2xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-3xl">
+                    ការបង់ប្រាក់បានជោគជ័យ!
+                </h1>
+
+                <p class="mx-auto mt-4 max-w-md text-sm leading-7 text-slate-500 sm:text-base">
+                    យើងបានបញ្ជាក់ថាការបង់ប្រាក់របស់អ្នកបានជោគជ័យ។ សូមអរគុណចំពោះការបញ្ជាទិញ។
+                </p>
+
+                <!-- Paid amount -->
+                <div class="mt-8 rounded-2xl bg-slate-50 p-5 text-left sm:p-6">
+                    <p class="text-sm font-medium text-slate-500 sm:text-base">
+                        ចំនួនទឹកប្រាក់ដែលបានបង់
+                    </p>
+
+                    <p class="mt-1 flex flex-wrap items-baseline gap-x-2 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
+                        <span>{{ amount }}</span>
+                        <span class="text-base font-semibold text-slate-500 sm:text-lg">{{ currency }}</span>
+                    </p>
+
+                    <div class="mt-5 border-t border-dashed border-slate-200 pt-4">
+                        <p class="text-sm leading-6 text-slate-500">
+                            សូមរក្សាទុកព័ត៌មាននេះសម្រាប់ជាឯកសារយោង។
+                        </p>
+                    </div>
+                </div>
+
+                <a href="{{ url_for('cart') }}"
+                   class="mt-8 inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-xl bg-emerald-600 px-5 py-4 text-sm font-bold text-white shadow-lg shadow-emerald-600/20 transition duration-200 hover:-translate-y-0.5 hover:bg-emerald-700 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-emerald-200 active:translate-y-0 sm:text-base">
+                    <span>ត្រឡប់ទៅកន្ត្រកទំនិញ</span>
+                    <svg class="size-5 shrink-0" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M19 12H5m7 7-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </section>
+
+            <!-- Transaction details -->
+            <section class="w-full rounded-xl border border-slate-200 bg-white/70 p-5 sm:p-7 lg:-ml-px lg:p-7 xl:p-8"
+                     aria-labelledby="transaction-details-title">
+                <h2 id="transaction-details-title" class="mb-5 text-xl font-extrabold tracking-tight text-slate-900 sm:text-2xl">
+                    ព័ត៌មានប្រតិបត្តិការទូទាត់
+                </h2>
+
+                <dl class="space-y-4 text-sm sm:text-base">
+                    <div class="grid grid-cols-1 gap-1 sm:grid-cols-[minmax(130px,0.7fr)_minmax(0,1.3fr)] sm:items-start sm:gap-5">
+                        <dt class="text-slate-500">ចំនួនទឹកប្រាក់</dt>
+                        <dd class="font-semibold text-slate-900 sm:text-right">
+                            {{ amount }} {{ currency }}
+                        </dd>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-1 sm:grid-cols-[minmax(130px,0.7fr)_minmax(0,1.3fr)] sm:items-start sm:gap-5">
+                        <dt class="text-slate-500">គណនីអ្នកបង់</dt>
+                        <dd class="break-words font-semibold text-slate-900 sm:text-right">
+                            {{ payer or 'មិនមានទិន្នន័យ' }}
+                        </dd>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-1 sm:grid-cols-[minmax(130px,0.7fr)_minmax(0,1.3fr)] sm:items-start sm:gap-5">
+                        <dt class="text-slate-500">គណនីទទួល</dt>
+                        <dd class="break-words font-semibold text-slate-900 sm:text-right">
+                            {{ receiver or 'មិនមានទិន្នន័យ' }}
+                        </dd>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-1 sm:grid-cols-[minmax(130px,0.7fr)_minmax(0,1.3fr)] sm:items-start sm:gap-5">
+                        <dt class="text-slate-500">លេខប្រតិបត្តិការ</dt>
+                        <dd class="transaction-hash font-medium leading-6 text-slate-900 sm:text-right sm:text-sm">
+                            {{ transaction_hash or 'មិនមានទិន្នន័យ' }}
+                        </dd>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-1 sm:grid-cols-[minmax(130px,0.7fr)_minmax(0,1.3fr)] sm:items-start sm:gap-5">
+                        <dt class="text-slate-500">ពេលបញ្ជាក់ការទូទាត់</dt>
+                        <dd class="font-semibold text-slate-900 sm:text-right">
+                            {{ acknowledged_at or 'មិនមានទិន្នន័យ' }}
+                        </dd>
+                    </div>
+                </dl>
+            </section>
+        </div>
+    </main>
+</body>
+</html>

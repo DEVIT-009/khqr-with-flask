@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KHQR Payment</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        *{
+            font-family: Khmer OS Battambang;
+        }
+    </style>
+</head>
+<body class="bg-transparent">
+    <div class="flex flex-col items-center justify-center gap-3 p-2 align-center h-screen">
+        <img
+            src="{{ qr_image }}"
+            alt="KHQR payment QR code"
+            class="h-auto w-full max-w-96 rounded-lg object-contain shadow-lg"
+        >
+
+        <p class="text-center text-sm text-slate-500">
+            សូមស្កេន QR Code ដើម្បីបង់ប្រាក់។
+        </p>
+        <p class="text-center text-xs leading-5 text-slate-500">
+            សូមប្រាកដថាអ្នកបានបង់ប្រាក់ដោយជោគជ័យ មុនពេលបន្ត។
+        </p>
+
+        <form method="post" action="{{ url_for('check_payment') }}"
+            class="w-full max-w-sm space-y-3">
+
+            <input type="hidden" name="qr_string" value="{{ qr_string }}">
+            <input type="hidden" name="amount" value="{{ amount }}">
+            <input type="hidden" name="currency" value="{{ currency }}">
+
+            <button
+                type="submit"
+                class="flex w-full items-center justify-center gap-2 rounded-xl
+                    bg-red-600 px-6 py-4 text-sm font-bold text-white
+                    shadow-lg shadow-red-600/20 transition duration-200
+                    hover:-translate-y-0.5 hover:bg-red-700 hover:shadow-xl
+                    focus:outline-none focus:ring-4 focus:ring-red-200
+                    active:translate-y-0">
+
+                ខ្ញុំបានបង់ប្រាក់រួចហើយ
+                <!-- Check icon -->
+                <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="m5 12 4 4L19 6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </form>
+    </div>
+</body>
+</html>

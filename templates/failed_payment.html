@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ការបង់ប្រាក់មិនទាន់ជោគជ័យ | KHQR</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>* { font-family: 'Khmer OS Battambang', system-ui, sans-serif; }</style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-900">
+    <main class="flex min-h-screen items-center justify-center p-5">
+        <section class="w-full max-w-md rounded-3xl border border-amber-100 bg-white p-7 text-center shadow-xl shadow-slate-950/5 sm:p-10">
+            <div class="mx-auto grid size-20 place-items-center rounded-full bg-amber-50 text-amber-600">
+                <svg class="size-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M12 9v4m0 4h.01" stroke-linecap="round"/>
+                    <path d="M10.3 3.9 2.6 17.2A2 2 0 0 0 4.3 20h15.4a2 2 0 0 0 1.7-2.8L13.7 3.9a2 2 0 0 0-3.4 0Z" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <p class="mt-6 text-sm font-bold uppercase tracking-widest text-amber-600">Payment not confirmed</p>
+            <h1 class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">មិនទាន់អាចបញ្ជាក់ការបង់ប្រាក់បានទេ</h1>
+            <p class="mt-3 text-sm leading-6 text-slate-500">
+                ប្រព័ន្ធមិនទាន់ទទួលបានការបញ្ជាក់ថាការបង់ប្រាក់បានជោគជ័យទេ។ ប្រសិនបើអ្នកទើបតែបង់ប្រាក់ សូមរង់ចាំបន្តិច ហើយពិនិត្យម្ដងទៀត។
+            </p>
+            <div class="mt-6 rounded-2xl border border-amber-100 bg-amber-50 p-4 text-left">
+                <p class="text-sm font-bold text-amber-800">សូមចំណាំ</p>
+                <p class="mt-1 text-sm leading-6 text-amber-800/80">
+                    កុំបង់ប្រាក់ម្ដងទៀតភ្លាមៗ ប្រសិនបើប្រាក់ត្រូវបានកាត់ចេញពីគណនីរបស់អ្នករួចហើយ។
+                </p>
+            </div>
+            <div class="mt-7 grid gap-3 sm:grid-cols-2">
+                <button type="button" onclick="history.back()"
+                        class="inline-flex w-full items-center justify-center rounded-xl bg-red-600 px-5 py-3.5 text-sm font-bold text-white shadow-lg shadow-red-600/20 transition hover:-translate-y-0.5 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-200">
+                    ត្រឡប់ទៅ QR Code
+                </button>
+                <a href="{{ url_for('cart') }}"
+                   class="inline-flex w-full items-center justify-center rounded-xl border border-slate-200 bg-white px-5 py-3.5 text-sm font-bold text-slate-700 transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-200">
+                    ត្រឡប់ទៅកន្ត្រក
+                </a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
